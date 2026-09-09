@@ -1,0 +1,222 @@
+.status-page-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  font-family: 'Kanit', sans-serif;
+}
+
+.status-page-header {
+  margin-bottom: 10px;
+}
+
+.status-page-header h1 {
+  font-size: 1.8rem;
+  color: #333;
+}
+
+.back-btn {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.status-tabs {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 10px;
+  margin: 20px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.tab-btn {
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  cursor: pointer;
+  color: #666;
+  white-space: nowrap;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  background-color: #f3f4f6;
+  color: #2563eb;
+  font-weight: bold;
+}
+
+/* --- Booking Item Card --- */
+.booking-item {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  
+  /* สำคัญสำหรับการทำ Overlay */
+  position: relative;
+  overflow: hidden; 
+}
+
+/* Hover Effect สำหรับ Unpaid item */
+.booking-item.item-clickable:hover {
+  background-color: #fffdfd;
+  border-color: #ffcccc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.booking-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-right: 20px;
+  flex-shrink: 0;
+}
+
+.booking-details {
+  flex: 1;
+}
+
+.booking-package {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.booking-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.booking-summary {
+  text-align: right;
+  min-width: 120px;
+}
+
+.status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.booking-total {
+  font-weight: bold;
+  color: #333;
+  font-size: 1.1rem;
+}
+
+/* --- Status Colors --- */
+.pending { background-color: #fff7ed; color: #c2410c; }
+.edit-pending { background-color: #eef2ff; color: #4338ca; }
+.confirmed { background-color: #f0fdf4; color: #15803d; }
+.completed { background-color: #ecfccb; color: #3f6212; }
+.cancelled { background-color: #fef2f2; color: #b91c1c; }
+
+/* Empty State */
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  color: #9ca3af;
+}
+
+.empty-state p {
+  margin-top: 10px;
+}
+
+/* --- [NEW] Card Actions Overlay (ปุ่ม Hover) --- */
+.card-actions-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(255, 255, 255, 0.92); /* พื้นหลังขาวจางๆ */
+  backdrop-filter: blur(3px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.booking-item:hover .card-actions-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.action-btn {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-family: 'Kanit', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.action-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.edit-btn {
+  background-color: #f59e0b; /* สีส้ม */
+  color: white;
+}
+
+.cancel-btn {
+  background-color: #ef4444; /* สีแดง */
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .booking-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+  
+  .booking-summary {
+    text-align: left;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #eee;
+    padding-top: 10px;
+  }
+
+  .card-actions-overlay {
+    /* บนมือถืออาจจะให้แสดงปุ่มตลอดเวลา หรือกดเพื่อแสดงก็ได้ */
+    /* ถ้าใช้ hover บนมือถือต้องแตะค้าง */
+  }
+}

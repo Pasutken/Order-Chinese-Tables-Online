@@ -1,0 +1,312 @@
+/* --- 1. สไตล์หลักและแท็บ (Main & Tabs) --- */
+
+.manage-drinks-container {
+  width: 100%;
+  padding: 20px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, sans-serif;
+  background-color: #f4f7f6; /* สีพื้นหลังอ่อนๆ */
+}
+
+.tab-navigation {
+  display: flex;
+  border-bottom: 2px solid #dee2e6;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  font-size: 1.1rem; /* ขนาดตัวอักษรใหญ่ขึ้นเล็กน้อย */
+  font-weight: 500;
+  color: #6c757d; /* สีเทาเข้ม */
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px; /* ดึงปุ่มลงมาทับเส้นล่าง */
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #007bff;
+}
+
+.tab-btn.active {
+  color: #007bff; /* สีฟ้าสำหรับแท็บที่ใช้งาน */
+  font-weight: 700;
+  border-bottom-color: #007bff;
+}
+
+/* --- 2. สไตล์ปุ่มหลัก (Primary Button) --- */
+/* (ใช้สำหรับ "เพิ่มหมวดหมู่" และ "เพิ่มเซ็ต") */
+
+.add-category-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px; /* ระยะห่างระหว่างไอคอนและข้อความ */
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #007bff; /* สีหลัก (ฟ้า) */
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.2s ease;
+}
+
+.add-category-btn:hover {
+  background-color: #0056b3; /* สีเข้มขึ้นเมื่อ hover */
+}
+
+.add-category-btn .bi {
+  font-size: 1.2rem; /* ขนาดไอคอน */
+}
+
+/* --- 3. สไตล์การ์ด (Card Styles) --- */
+
+.package-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 20px;
+}
+
+.package {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  overflow: hidden; 
+}
+
+/* --- 🎨 4. สไตล์หมวดหมู่ (อัปเดตสีปุ่ม) --- */
+
+.drink-category .packagename-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid #eee;
+  background-color: #fcfcfc; /* สีหัวการ์ด */
+}
+
+.drink-category .packagename-container b {
+  font-size: 1.2rem;
+  color: #333;
+}
+
+/* 🎨 ปุ่มไอคอน (แก้ไข/ลบ หมวดหมู่) */
+.edit-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #ffc107; /* อัปเดต: เปลี่ยนเป็นสีเหลือง (Warning) */
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.delete-btn-simple {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: #dc3545; /* อัปเดต: เปลี่ยนเป็นสีแดง (Danger) */
+  padding: 5px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.edit-btn:hover {
+  color: #e0a800; /* สีเหลืองเข้มขึ้น */
+  background-color: #fff3cd; /* พื้นหลังเหลืองอ่อน */
+}
+.delete-btn-simple:hover {
+  color: #c82333; /* สีแดงเข้มขึ้น */
+  background-color: #fdeeee; /* พื้นหลังแดงอ่อน */
+}
+
+
+/* --- 🎨 5. สไตล์รายการย่อย (อัปเดตสีปุ่ม) --- */
+
+.drink-items-list {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 20px; /* เว้นขอบซ้ายขวา */
+  gap: 8px; /* ระยะห่างระหว่างรายการ */
+  margin-bottom: 10px;
+}
+
+.drink-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #f8f9fa; /* สีพื้นหลังของรายการ */
+  border: 1px solid #eee;
+}
+
+.drink-item span {
+  flex-grow: 1; /* ให้ข้อความยืดเต็มพื้นที่ */
+  color: #444;
+}
+
+.drink-item div {
+  /* คอนเทนเนอร์สำหรับปุ่ม "แก้" "ลบ" */
+  display: flex;
+  gap: 8px;
+  margin-left: 10px;
+}
+
+/* 🎨 ปุ่ม "แก้" "ลบ" ของรายการย่อย */
+.drink-item button {
+  font-size: 0.9rem;
+  padding: 4px 10px;
+  border: none; /* อัปเดต: ลบขอบทิ้ง */
+  border-radius: 4px;
+  cursor: pointer;
+  color: #fff; /* อัปเดต: สีตัวอักษรเป็นสีขาว (ยกเว้นปุ่มเหลือง) */
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+/* 🎨 อัปเดต: ปุ่ม "แก้" (ปุ่มแรก) */
+.drink-item button:first-child {
+  background-color: #ffc107; /* สีเหลือง (Warning) */
+  color: #212529; /* สีเทาเข้ม (เพื่อให้ตัดกับพื้นเหลือง) */
+}
+.drink-item button:first-child:hover {
+  background-color: #e0a800; /* เหลืองเข้ม */
+}
+
+/* 🎨 อัปเดต: ปุ่ม "ลบ" (ปุ่มที่ 2) */
+.drink-item button:last-child {
+  background: #dc3545; /* สีแดง (Danger) */
+  color: #fff; /* สีขาว */
+}
+.drink-item button:last-child:hover {
+  background: #c82333; /* แดงเข้ม */
+}
+
+/* --- 6. สไตล์ปุ่ม "เพิ่มรายการในหมวดนี้" --- */
+
+.add-item-btn {
+  width: calc(100% - 40px); /* 100% - padding 20px ซ้ายขวา */
+  padding: 10px;
+  background: #f0f8ff; /* สีฟ้าอ่อนมาก */
+  border: 1.5px dashed #007bff;
+  color: #007bff;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0 20px 20px 20px; /* ชิดขอบการ์ด */
+  transition: background-color 0.2s ease;
+}
+
+.add-item-btn:hover {
+  background: #e6f3ff;
+}
+
+/* --- 7. สไตล์ฟอร์มเพิ่ม/แก้ไขรายการ (Item Form) --- */
+
+.item-form {
+  display: flex;
+  flex-wrap: wrap; /* ให้ปุ่มตกบรรทัดได้ถ้าไม่พอ */
+  gap: 10px;
+  padding: 20px;
+  background: #f8f9fa; /* สีเทาอ่อน */
+  margin-top: 10px; 
+}
+
+.item-form input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  box-sizing: border-box; /* สำคัญมากสำหรับการจัด flex */
+}
+
+/* จัดสัดส่วน input */
+.item-form input[name="name"] {
+  flex: 2 1 120px; /* ยืด 2 ส่วน, หด 1 ส่วน, ขั้นต่ำ 120px */
+}
+.item-form input[name="price"] {
+  flex: 1 1 60px; /* ยืด 1 ส่วน, หด 1 ส่วน, ขั้นต่ำ 60px */
+}
+.item-form input[name="unit"] {
+  flex: 1 1 80px; /* ยืด 1 ส่วน, หด 1 ส่วน, ขั้นต่ำ 80px */
+}
+
+/* ปุ่มในฟอร์ม */
+.btn-save-item,
+.btn-cancel-item {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: background-color 0.2s ease;
+}
+
+.btn-save-item {
+  background: #28a745; /* สีเขียว */
+  color: white;
+}
+.btn-save-item:hover {
+  background: #218838;
+}
+
+.btn-cancel-item {
+  background: #6c757d; /* สีเทา */
+  color: white;
+}
+.btn-cancel-item:hover {
+  background: #5a6268;
+}
+
+/* --- 🎨 8. สไตล์การ์ดของเซ็ต (อัปเดตสีปุ่ม) --- */
+
+.sets-view .package {
+  display: flex;
+  flex-direction: column;
+  padding: 20px; /* เพิ่ม padding สำหรับ set card */
+  gap: 12px; /* ระยะห่างระหว่าง elements ภายใน set card */
+}
+
+.sets-view .package b {
+  font-size: 1.25rem;
+  color: #333;
+}
+
+/* 🎨 ปุ่มบน Set Card */
+.sets-view .package button {
+  padding: 8px 12px; /* เพิ่ม padding ให้ใหญ่ขึ้นเล็กน้อย */
+  border: none; /* อัปเดต: ลบขอบ */
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #fff; /* อัปเดต: สีตัวอักษรขาว (Default) */
+  transition: background-color 0.2s ease;
+}
+
+/* 🎨 อัปเดต: ปุ่ม "แก้ไข" (ปุ่มแรก) */
+.sets-view .package button:first-of-type {
+  background-color: #ffc107; /* สีเหลือง (Warning) */
+  color: #212529; /* สีเทาเข้ม (สำหรับบนสีเหลือง) */
+}
+.sets-view .package button:first-of-type:hover {
+  background-color: #e0a800;
+}
+
+/* 🎨 อัปเดต: ปุ่ม "ลบ" (ปุ่มที่ 2) */
+.sets-view .package button:last-of-type {
+  background: #dc3545; /* สีแดง (Danger) */
+  color: #fff;
+}
+.sets-view .package button:last-of-type:hover {
+  background: #c82333;
+}

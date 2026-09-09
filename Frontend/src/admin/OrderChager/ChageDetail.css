@@ -1,0 +1,274 @@
+/* --- ส่วน Base Styles (ปรับปรุงจากของเดิม) --- */
+
+/* ปรับ modal layout */
+.modal-body {
+  padding: 30px;
+  display: flex;
+  flex-direction: column; /* Default เป็นแนวตั้ง (Mobile First) */
+  gap: 20px;
+}
+
+.modal-info {
+  margin-bottom: 0;
+  flex: 1; /* ให้ขยายเต็มพื้นที่ */
+}
+
+.modal-info p {
+  margin: 8px 0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.modal-date {
+  background: #f9f0f0;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 0;
+  /* Default สำหรับมือถือ */
+  width: 100%; 
+}
+
+.modal-date h3 {
+  font-size: 18px;
+  color: #c0392b;
+  margin-bottom: 12px;
+}
+
+.date-info p {
+  margin: 8px 0;
+  font-size: 15px;
+  color: #555;
+}
+
+/* ปุ่มรับงาน/ปฏิเสธ */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+  margin-top: 20px;
+  padding-top: 20px;
+  border-top: 1px solid #eee;
+}
+
+.btn-accept {
+  background: #27ae60;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-accept:hover {
+  background: #219150;
+}
+
+.btn-reject {
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn-reject:hover {
+  background: #a93226;
+}
+
+.modal-details {
+  display: none;
+}
+
+/* Sidebar Badge */
+.sidebar-menu h1:nth-child(4)::after {
+  content: "1";
+  background: #c0392b;
+  color: white;
+  font-size: 12px;
+  padding: 2px 6px;
+  border-radius: 50%;
+  margin-left: 8px;
+  vertical-align: super;
+}
+
+/* Card Content Styles */
+.Ordering-Card-Content {
+  display: none; 
+}
+
+.Ordering-Card-Header h2 {
+  font-size: 18px;
+  color: #2d2424;
+}
+
+.order-comparison {
+  width: 100%;
+}
+
+/* Header เปรียบเทียบ (ซ่อนในมือถือ) */
+.comparison-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding: 10px 0;
+  border-bottom: 1px solid #ddd;
+  font-weight: 600;
+  color: #c0392b;
+}
+
+.comparison-header span {
+  flex: 1;
+  text-align: center;
+}
+
+.comparison-header span:first-child {
+  text-align: left;
+}
+
+.comparison-header span:last-child {
+  text-align: right;
+}
+
+.items-comparison {
+  margin-bottom: 15px;
+}
+
+.item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 15px;
+}
+
+.item-row:last-child {
+  border-bottom: none;
+}
+
+.old-item, .new-item {
+  flex: 1;
+  padding: 0 10px;
+  word-break: break-word; /* ป้องกันคำยาวเกิน */
+}
+
+.old-item {
+  text-align: left;
+  color: #666;
+  text-decoration: line-through; /* ขีดฆ่าของเก่าเพื่อให้ชัดเจนขึ้น */
+}
+
+.new-item {
+  text-align: right;
+  color: #27ae60;
+  font-weight: 500;
+}
+
+.arrow {
+  flex: 0 0 40px;
+  text-align: center;
+  color: #c0392b;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.empty {
+  visibility: hidden;
+}
+
+.notes-row {
+  margin-top: 15px;
+  padding-top: 15px;
+  border-top: 1px dashed #ddd;
+  display: flex;
+  justify-content: flex-start;
+  gap: 10px;
+  align-items: center;
+  font-style: italic;
+  color: #888;
+  font-size: 14px;
+}
+
+/* --- Media Query: สำหรับ Desktop (จอใหญ่กว่า 768px) --- */
+/* เพื่อทำ Layout 2 คอลัมน์ตามที่คุณต้องการ */
+@media (min-width: 769px) {
+  .modal-body {
+    flex-direction: row; /* เรียงแนวนอน */
+    align-items: flex-start;
+  }
+
+  .modal-date {
+    width: 280px; /* กำหนดความกว้างคงที่ด้านขวา */
+    flex-shrink: 0; /* ห้ามหด */
+    margin-left: 20px;
+  }
+}
+
+/* --- Media Query: สำหรับ Mobile (จอเล็กกว่า 768px) --- */
+@media (max-width: 768px) {
+  /* ปรับ Modal */
+  .modal-body {
+    padding: 20px; /* ลด Padding */
+  }
+
+  /* ซ่อน Header ตารางเปรียบเทียบ เพราะบนมือถือจะเรียงใหม่ */
+  .comparison-header {
+    display: none;
+  }
+
+  /* ปรับแถวรายการ */
+  .item-row {
+    flex-direction: column; /* เรียงแนวตั้ง */
+    background: #f8f9fa; /* ใส่สีพื้นหลังให้แยกแต่ละรายการชัดเจน */
+    border-radius: 8px;
+    margin-bottom: 10px;
+    padding: 15px;
+    border: 1px solid #eee;
+  }
+
+  .old-item, .new-item {
+    text-align: center; /* จัดกึ่งกลาง */
+    width: 100%;
+    padding: 5px 0;
+  }
+  
+  .old-item {
+    font-size: 0.9rem;
+  }
+
+  .new-item {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  /* หมุนลูกศรชี้ลง */
+  .arrow {
+    transform: rotate(90deg);
+    margin: 5px 0;
+    color: #ccc; /* สีอ่อนลงหน่อย */
+  }
+
+  /* ปุ่มกด */
+  .modal-actions {
+    flex-direction: column; /* ปุ่มเรียงแนวตั้ง */
+    gap: 10px;
+  }
+
+  .btn-accept, .btn-reject {
+    width: 100%; /* ปุ่มเต็มความกว้าง */
+    padding: 12px;
+  }
+
+  .notes-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

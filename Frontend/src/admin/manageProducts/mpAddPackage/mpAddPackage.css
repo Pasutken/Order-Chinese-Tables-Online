@@ -1,0 +1,298 @@
+/* --- 1. 🎨 Container หลัก & Header --- */
+.MpAddPackage-container {
+  max-width: 900px;
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
+  padding: 2.5rem;
+}
+
+.MpAddPackage-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* (เพิ่ม) เผื่อหน้าจอแคบมากๆ */
+  gap: 1rem; /* (เพิ่ม) เว้นระยะห่าง */
+}
+
+/* (ปุ่ม Back) */
+.MpAddPackage-header-container button {
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #6c757d;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.MpAddPackage-header-container button:hover {
+  color: #007bff;
+}
+
+/* (Dropdown หมวดหมู่) */
+.package-select {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap; /* (เพิ่ม) */
+}
+.package-select p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #343a40;
+}
+.package-select select {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  border: 1px solid #ced4da;
+  background-color: #f8f9fa;
+}
+
+/* --- 2. 📝 ส่วนข้อมูลแพ็คเกจ (ชื่อ, ราคา, ปุ่มเพิ่มจาน) --- */
+.createMenu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* (เว้นระยะห่างระหว่าง "จาน") */
+}
+
+.addAndbtndish {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* (จัดให้อยู่ล่างสุด) */
+  flex-wrap: wrap; /* (ขึ้นบรรทัดใหม่บนจอเล็ก) */
+  gap: 1rem;
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 1.5rem;
+}
+
+/* (Input ชื่อแพ็คเกจ) */
+.packageName {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #212529;
+  border: none;
+  border-bottom: 2px solid #dee2e6;
+  padding: 0.5rem 0;
+  transition: border-color 0.2s ease;
+  flex: 1; /* (ให้ขยายเต็ม) */
+  min-width: 250px; /* (ความกว้างขั้นต่ำ) */
+}
+.packageName::placeholder {
+  color: #adb5bd;
+}
+.packageName:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* (ส่วนแสดงราคา) */
+.calculated-price-display {
+  text-align: right;
+  font-size: 0.9rem;
+  color: #495057;
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 6px;
+  flex-shrink: 0; /* (กันการหดตัว) */
+}
+.calculated-price-display div:first-child {
+  margin-bottom: 0.25rem;
+}
+.calculated-price-display strong {
+  font-size: 1.1rem;
+  color: #007bff;
+  margin-left: 0.5rem;
+}
+
+/* (ปุ่ม "เพิ่มจาน") */
+.addAndbtndish button {
+  background-color: #28a745; /* (สีเขียว) */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0; /* (กันการหดตัว) */
+}
+.addAndbtndish button:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+}
+
+/* --- 3. 🍽️ สไตล์ "การ์ดจาน" (Dish Course) --- */
+.dish-course-container {
+  background: #fdfdff;
+  border: 1px solid #e0e6ef;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+}
+
+/* (ส่วนหัวของจาน) */
+.dish-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #d1d9e6;
+  padding-bottom: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap; /* (เพิ่ม) */
+}
+.dish-header label {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #343a40;
+  flex: 1; /* (ดันปุ่มไปขวา) */
+}
+
+/* (ปุ่ม "เพิ่มตัวเลือก" ใน Header จาน) */
+.dish-header button:nth-of-type(1) {
+  background-color: #e9f5ff;
+  color: #0056b3;
+  border: 1px solid #d1e9ff;
+  font-weight: 600;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.dish-header button:nth-of-type(1):hover {
+  background-color: #d1e9ff;
+}
+
+/* (ปุ่ม "ลบจาน" - ถังขยะ) */
+.dish-header button:nth-of-type(2) {
+  background: transparent;
+  border: none;
+  font-size: 1.4rem;
+  color: #dc3545;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+.dish-header button:nth-of-type(2):hover {
+  color: #a71d2a;
+}
+
+/* --- 4. 🍔 สไตล์ "ตัวเลือกเมนู" (Option Item) --- */
+.option-item-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* (ปุ่มเลือกเมนูอันใหญ่) */
+.menu-select-button {
+  flex-grow: 1;
+  text-align: left;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  background: #ffffff;
+  border: 1px dashed #adb5bd;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #495057;
+}
+.menu-select-button:hover {
+  border-color: #007bff;
+  color: #007bff;
+  background: #f8faff;
+}
+
+/* (ปุ่มลบตัวเลือก - X) */
+.option-item-container button {
+  background: transparent;
+  border: none;
+  font-size: 1.3rem;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+.option-item-container button:hover {
+  color: #dc3545;
+}
+
+/* --- 5. 💾 ปุ่ม "บันทึก" หลัก (ล่างสุด) --- */
+.createMenu-container > button:last-of-type {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.25rem;
+  font-weight: 700;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+}
+.createMenu-container > button:last-of-type:hover {
+  background-color: #0056b3;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.2);
+}
+
+/* --- 6. 📱 (ส่วนที่เพิ่ม) Responsive สำหรับมือถือ --- */
+@media (max-width: 768px) {
+  /* (ปรับ Container หลัก) */
+  .MpAddPackage-container {
+    margin: 1rem auto;
+    padding: 1.5rem;
+  }
+
+  /* (จัดเรียง Header ใหม่) */
+  .MpAddPackage-header-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .package-select {
+    width: 100%;
+  }
+  .package-select select {
+    flex: 1; /* (ให้ dropdown ขยายเต็ม) */
+  }
+
+  /* (จัดเรียงส่วนชื่อ/ราคา/ปุ่มใหม่) */
+  .addAndbtndish {
+    flex-direction: column;
+    align-items: stretch; /* (ยืดทุกอย่างให้เต็ม 100%) */
+    gap: 1rem;
+  }
+  .packageName {
+    font-size: 1.5rem; /* (ลดขนาด Font) */
+    min-width: unset;
+  }
+  .calculated-price-display {
+    text-align: left; /* (เปลี่ยนเป็นชิดซ้าย) */
+  }
+  .addAndbtndish button {
+    justify-content: center; /* (จัดปุ่มให้อยู่กลาง) */
+  }
+
+  /* (ปรับการ์ดจาน) */
+  .dish-course-container {
+    padding: 1rem;
+  }
+  .dish-header label {
+    font-size: 1.15rem;
+    min-width: 100px; /* (กัน label โดนเบียด) */
+  }
+  
+  /* (ปรับปุ่มบันทึก) */
+  .createMenu-container > button:last-of-type {
+    font-size: 1.1rem;
+    padding: 0.9rem;
+  }
+}

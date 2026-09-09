@@ -1,0 +1,278 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: "Prompt", sans-serif;
+  background-color: #f5f5f5;
+  overflow-x: hidden;
+}
+
+/* Root Container */
+.login-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f7e09e, #ffe082);
+  animation: fadeIn 0.8s ease-in-out;
+  /* เพิ่ม padding เพื่อไม่ให้กล่องชิดขอบจอมือถือเกินไป */
+  padding: 1rem; 
+}
+
+/* กล่องฟอร์มหลัก */
+.login-container {
+  background: #ffffff;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  animation: slideUp 0.7s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+}
+
+.login-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* หัวข้อ */
+.login-container h2 {
+  font-size: 1.8rem;
+  color: #1a1a1a;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* ข้อความย่อย */
+.login-container p {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* กล่อง input */
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #f9a825;
+  box-shadow: 0 0 8px rgba(249, 168, 37, 0.3);
+  transform: scale(1.01);
+}
+
+/* Animation เมื่อ error */
+.form-group input.error {
+  border-color: #e53935;
+  animation: shake 0.3s ease-in-out;
+}
+
+/* error */
+.error-message {
+  color: #e53935;
+  font-size: 0.9rem;
+  margin: 0.8rem 0;
+  text-align: center;
+  animation: fadeInError 0.3s ease-in;
+}
+
+/* ปุ่มหลัก */
+.btn-login {
+  background: linear-gradient(90deg, #f9a825, #f57c00);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.9rem;
+  margin-top: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1.1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
+}
+
+.btn-login:hover {
+  background: linear-gradient(90deg, #fb8c00, #ef6c00);
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(245, 124, 0, 0.4);
+}
+
+/* เส้นคั่น */
+hr {
+  margin: 1.5rem 0;
+  border: 0;
+  border-top: 1px solid #e0e0e0;
+}
+
+/* ปุ่ม Social */
+.btn-social {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 0.8rem;
+  cursor: pointer;
+  background-color: #ffffff;
+  font-weight: 500;
+  width: 100%;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-social:hover {
+  background-color: #f5f5f5;
+  transform: translateY(-2px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn-social img {
+  width: 24px;
+  height: 24px;
+}
+
+/* สมัครสมาชิก / ส่งรหัสใหม่ */
+.signup-text {
+  text-align: center;
+  margin-top: 1.2rem;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.signup-text a, .signup-text span {
+  color: #0288d1;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.signup-text a:hover, .signup-text span:hover {
+  color: #01579b;
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInError {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* =========================================
+   📱 Responsive Media Queries
+   ========================================= */
+
+/* สำหรับหน้าจอมือถือทั่วไป (กว้างไม่เกิน 480px) */
+@media (max-width: 480px) {
+  .login-container {
+    padding: 1.5rem; /* ลด Padding ในการ์ดลง */
+    max-width: 100%;
+  }
+
+  .login-container h2 {
+    font-size: 1.5rem; /* ลดขนาดหัวข้อ */
+    margin-bottom: 1rem;
+  }
+
+  .login-container p {
+    font-size: 0.9rem; /* ลดขนาดข้อความย่อย */
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+
+  .form-group input {
+    padding: 0.7rem; /* ลดความสูง input เล็กน้อย */
+    font-size: 16px; /* ป้องกัน iOS ซูมเองเมื่อกดพิมพ์ */
+  }
+
+  .btn-login {
+    padding: 0.8rem;
+    margin-top: 1rem;
+    font-size: 1rem;
+  }
+
+  .btn-social {
+    padding: 0.7rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* สำหรับหน้าจอเล็กมาก (กว้างไม่เกิน 350px เช่น iPhone SE รุ่นเก่า) */
+@media (max-width: 350px) {
+  .login-page {
+    padding: 0.5rem;
+  }
+
+  .login-container {
+    padding: 1.2rem;
+  }
+
+  .login-container h2 {
+    font-size: 1.3rem;
+  }
+
+  .btn-social {
+    font-size: 0.85rem;
+    gap: 0.5rem;
+  }
+  
+  .signup-text {
+    font-size: 0.85rem;
+  }
+}
+
+/* สำหรับหน้าจอแนวนอน (Landscape) ที่มีความสูงน้อย */
+@media (max-height: 600px) {
+  .login-page {
+    padding: 1rem 0; /* เพิ่มพื้นที่บนล่างให้ scroll ได้ง่าย */
+    height: auto; /* ปล่อย height ให้ยืดตามเนื้อหา */
+  }
+  
+  .login-container {
+    margin: 20px 0;
+  }
+}

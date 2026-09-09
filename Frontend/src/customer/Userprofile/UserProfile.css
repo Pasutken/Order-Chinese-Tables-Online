@@ -1,0 +1,373 @@
+/* UserProfile.css */
+.profile-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  font-family: 'Kanit', sans-serif;
+  color: #333;
+  margin-top: 10vh;
+}
+
+.profile-container.loading {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #777;
+}
+
+/* --- Header --- */
+.profile-page-header {
+  position: relative;
+  text-align: center;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 25px;
+  margin-bottom: 30px;
+}
+
+.back-button {
+  position: absolute;
+  top: -10px; 
+  left: 0;   
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  display: flex;
+  color: #555;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.back-button:hover {
+  background-color: #f0f0f0;
+  color: #111;
+}
+
+.profile-header {
+  text-align: center;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 15px;
+  color: #888;
+  border: 4px solid #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile-header h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.profile-header p {
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+  color: #777;
+}
+
+/* --- Content --- */
+.profile-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.profile-section {
+  background-color: #fafafa;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  padding: 25px;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.section-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #c00; /* (ใช้สีหลักของคุณ) */
+}
+
+/* --- Details Grid (Display) --- */
+.details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.detail-item {
+  font-size: 1rem;
+}
+
+.detail-item span {
+  font-weight: 500;
+  color: #555;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.detail-item p {
+  margin: 0;
+  color: #111;
+  background: #fff;
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+}
+
+.detail-item.full-width {
+  grid-column: 1 / -1;
+}
+
+/* --- Details Grid (Editing) --- */
+.detail-item.editable {
+  display: flex;
+  flex-direction: column;
+}
+
+.detail-item.editable label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.detail-item.editable input,
+.detail-item.editable textarea {
+  font-family: 'Kanit', sans-serif;
+  font-size: 1rem;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+}
+
+.detail-item.editable textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.edit-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #eee;
+  padding-top: 20px;
+  margin-top: 10px;
+}
+
+/* --- Buttons --- */
+.edit-btn, .save-btn, .cancel-btn, .logout-btn {
+  font-family: 'Kanit', sans-serif;
+  font-size: 0.95rem;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.edit-btn { background-color: #007bff; color: white; }
+.edit-btn:hover { background-color: #0056b3; }
+.save-btn { background-color: #28a745; color: white; }
+.save-btn:hover { background-color: #218838; }
+.cancel-btn { background-color: #f0f0f0; color: #555; border: 1px solid #ccc; }
+.cancel-btn:hover { background-color: #e0e0e0; }
+.logout-btn {
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 30px auto 0;
+  padding: 12px 20px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  background-color: #dc3545;
+  color: white;
+}
+.logout-btn:hover { background-color: #c82333; }
+
+/* --- Booking History --- */
+.booking-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.booking-item {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 15px;
+  gap: 15px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.booking-item:hover {
+  border-color: #c00;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.booking-icon { flex-shrink: 0; color: #c00; }
+.booking-details { flex-grow: 1; }
+.booking-details .booking-package { font-weight: 600; font-size: 1.1rem; margin: 0; }
+.booking-details .booking-date { font-size: 0.9rem; color: #777; margin: 0; }
+.booking-summary { text-align: right; flex-shrink: 0; }
+.booking-summary .status { font-size: 0.85rem; font-weight: 500; padding: 3px 8px; border-radius: 12px; color: #fff; }
+.booking-summary .status.completed { background-color: #28a745; }
+.booking-summary .status.confirmed { background-color: #007bff; }
+.booking-summary .status.pending { background-color: #ffc107; color: #333; }
+.booking-summary .booking-total { font-size: 1.1rem; font-weight: 600; margin: 5px 0 0; }
+
+/* (ลิงก์ "ดูทั้งหมด" ในหน้า Profile) */
+.view-all-link {
+  font-family: 'Kanit', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #007bff;
+  text-decoration: none;
+  cursor: pointer;
+}
+.view-all-link:hover {
+  text-decoration: underline;
+}
+
+
+/* --- CSS สำหรับ Modal --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px 35px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 85vh;
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  padding: 5px;
+  line-height: 1;
+}
+.modal-close-btn:hover {
+  color: #111;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 25px;
+  font-size: 1.6rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 15px;
+}
+
+.modal-section {
+  margin-bottom: 20px;
+}
+
+.modal-section h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #c00;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.modal-section p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.modal-section.summary-short {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 15px;
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 25px;
+}
+
+.modal-detail-item span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #555;
+  margin-bottom: 5px;
+  display: block;
+}
+.modal-detail-item p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 0;
+}
+.modal-detail-item .modal-total-price {
+  color: #28a745;
+  font-size: 1.2rem;
+}
+
+.modal-item-list {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+.modal-item-list li {
+  margin-bottom: 5px;
+  color: #444;
+}
+.modal-item-list.with-price li {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px dashed #eee;
+}
+.modal-item-list.with-price li:last-child {
+  border-bottom: none;
+}
+.modal-item-list.with-price li span:last-child {
+  font-weight: 600;
+}

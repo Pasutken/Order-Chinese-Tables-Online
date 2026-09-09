@@ -1,0 +1,64 @@
+.mpPackage-container {
+  padding: 3rem;
+  /* background-color: none; */
+  width: auto;
+  height: 100vh;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  button {
+    border: none;
+    background-color: white;
+    font-size: 2rem;
+    border-radius: 7px;
+    border: none;
+  }
+  button:hover {
+    background-color: black;
+    color: white;
+  }
+}
+
+.package-select {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 0 auto;
+  align-items: center;
+
+  select {
+    width: 30vw;
+    height: 3rem;
+    border: none;
+    border-radius: 7px;
+    background-color: gainsboro;
+    padding-left: 2rem;
+  }
+}
+
+.plusDish-btn {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 4vh;
+  color: black;
+  border-radius: 15px;
+  border: none;
+  background-color: gray;
+  padding: 1.5rem 1rem 1.5rem 1rem;
+  gap: 0.4rem;
+  margin-top: 2rem;
+}
+.plusDish-btn:hover{
+    background-color: orange;
+    color: black;
+}
+
+.dish-group-header{
+  display: flex;
+  flex-direction: row;
+}

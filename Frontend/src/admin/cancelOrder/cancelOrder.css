@@ -1,0 +1,190 @@
+/* จัด Layout หลัก */
+.cancel-order-container {
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Kanit', sans-serif;
+}
+
+/* การ์ดรายการ */
+.order-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.order-card:hover {
+  border-color: #ff4d4d;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.payback-highlight {
+  color: #d32f2f;
+  font-size: 1.1em;
+}
+
+/* --- Modal CSS --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* พื้นหลังสีดำจางๆ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modal-content {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: slideDown 0.3s ease-out;
+  overflow: hidden;
+  max-height: 90vh; /* กัน Modal สูงเกินจอ */
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-header {
+  background-color: #f8f9fa;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #333;
+  font-size: 1.2rem; /* ปรับ font header ให้พอดี */
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0 5px; /* เพิ่มพื้นที่กดปิดเล็กน้อย */
+}
+
+.modal-body {
+  padding: 20px;
+  color: #444;
+  line-height: 1.6;
+  overflow-y: auto; /* ถ้าเนื้อหายาวให้เลื่อนได้ */
+}
+
+.refund-highlight-box {
+  background-color: #fff5f5;
+  border: 1px dashed #ff4d4d;
+  padding: 15px;
+  text-align: center;
+  border-radius: 8px;
+  margin: 15px 0;
+}
+
+.refund-highlight-box h1 {
+  color: #d32f2f;
+  margin: 5px 0 0 0;
+  font-size: 1.8rem; /* ปรับขนาดตัวเลขเงินให้พอดี */
+}
+
+.modal-footer {
+  padding: 15px 20px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  background-color: #f8f9fa;
+  border-top: 1px solid #eee;
+}
+
+/* ปุ่ม */
+.btn-secondary {
+  background-color: #e2e8f0;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  color: #475569;
+  font-size: 1rem;
+}
+
+.btn-primary {
+  background-color: #d32f2f; /* สีแดง */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+  font-size: 1rem;
+}
+
+.btn-primary:hover {
+  background-color: #b91c1c;
+}
+
+/* --- ส่วนที่เพิ่มเข้ามาเพื่อทำ Responsive (มือถือ/แท็บเล็ต) --- */
+@media (max-width: 768px) {
+  .cancel-order-container {
+    padding: 10px; /* ลด Padding ของ container หลัก */
+  }
+
+  .modal-content {
+    width: 95%; /* ขยายความกว้าง Modal บนมือถือ */
+    margin: 10px;
+  }
+
+  .modal-header, 
+  .modal-footer {
+    padding: 12px 15px; /* ลด Padding ส่วนหัวและท้าย */
+  }
+
+  .modal-body {
+    padding: 15px; /* ลด Padding ส่วนเนื้อหา */
+  }
+
+  .refund-highlight-box h1 {
+    font-size: 1.5rem; /* ลดขนาดตัวหนังสือยอดเงินเล็กน้อย */
+  }
+
+  .modal-footer {
+    flex-direction: column; /* เรียงปุ่มแนวตั้ง */
+  }
+
+  .btn-secondary, 
+  .btn-primary {
+    width: 100%; /* ปุ่มเต็มความกว้าง กดง่ายขึ้น */
+    padding: 12px; /* เพิ่มพื้นที่กดให้เหมาะกับนิ้วมือ */
+    text-align: center;
+  }
+
+  /* ให้ปุ่มยืนยันอยู่ด้านบน (ถ้าต้องการให้ปุ่มยืนยันอยู่ล่าง ให้ลบ order ออก) */
+  .btn-primary {
+    order: 1;
+  }
+  .btn-secondary {
+    order: 2;
+  }
+}

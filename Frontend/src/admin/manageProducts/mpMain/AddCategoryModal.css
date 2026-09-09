@@ -1,0 +1,81 @@
+/* ส่วน Backdrop และ Content (เหมือนเดิม) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  width: 90%;
+  max-width: 400px; /* Modal นี้เล็กกว่าหน่อย */
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+}
+
+/* ส่วน Body (ปรับแต่งสำหรับ Input) */
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 10px; /* เว้นช่องว่างระหว่าง Label, Input, Button */
+}
+
+.modal-body label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.modal-body input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.modal-submit-btn {
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #0d6efd; /* สีน้ำเงิน (Bootstrap Primary) */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.modal-submit-btn:hover {
+  background-color: #0b5ed7;
+}

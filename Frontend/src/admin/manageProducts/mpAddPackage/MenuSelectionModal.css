@@ -1,0 +1,182 @@
+/* พื้นหลังของ Modal (Overlay) */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px); /* (เสริม) เบลอพื้นหลังเล็กน้อย */
+}
+
+/* --- (แก้ไข) กล่องเนื้อหา Modal --- */
+.modal-content {
+  background-color: white;
+  width: 90%;
+  max-width: 500px;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  
+  /* จำกัดความสูงไม่ให้ล้นจอ */
+  max-height: 85vh; 
+  
+  /* Animation ตอนเด้งขึ้นมา */
+  animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ส่วนหัวของ Modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid #eee;
+  flex-shrink: 0; 
+}
+
+.modal-header h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #888;
+  padding: 0 10px; /* เพิ่มพื้นที่กด */
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+  color: #d32f2f;
+}
+
+/* --- สไตล์สำหรับแถบปุ่มกรอง (Tabs) --- */
+.modal-filter-tabs {
+  display: flex;
+  flex-wrap: nowrap; 
+  overflow-x: auto; 
+  padding: 1rem 1.5rem; 
+  border-bottom: 1px solid #eee; 
+  gap: 10px; 
+  background-color: #f9f9f9;
+  flex-shrink: 0; 
+}
+
+.modal-tab-btn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 20px; 
+  background-color: #f5f5f5;
+  color: #333;
+  cursor: pointer;
+  font-size: 0.9rem;
+  white-space: nowrap; 
+  transition: all 0.2s;
+  font-weight: 500; 
+}
+
+.modal-tab-btn:hover {
+  background-color: #e0e0e0;
+}
+
+.modal-tab-btn.active {
+  background-color: #007bff; 
+  color: white;
+  border-color: #007bff;
+  box-shadow: 0 2px 5px rgba(0,123,255,0.3);
+}
+
+/* ซ่อน Scrollbar */
+.modal-filter-tabs::-webkit-scrollbar {
+  display: none;
+}
+.modal-filter-tabs {
+  -ms-overflow-style: none; 
+  scrollbar-width: none; 
+}
+
+/* --- ส่วนเนื้อหา (รายการเมนู) --- */
+.modal-body {
+  padding: 1.5rem;
+  padding-top: 1rem; 
+  overflow-y: auto; 
+  flex-grow: 1;    
+  min-height: 200px; 
+}
+
+/* แต่ละรายการเมนูที่เลือกได้ */
+.menu-item-option {
+  display: flex;
+  justify-content: space-between; /* จัดข้อความกับราคาให้ห่างกัน */
+  align-items: center;
+  padding: 1rem; /* เพิ่มพื้นที่กด */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.2s;
+  background: #fff;
+}
+
+.menu-item-option:hover {
+  background-color: #f0f8ff;
+  border-color: #007bff;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item-option span {
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* --- ส่วน Responsive สำหรับมือถือ --- */
+@media (max-width: 600px) {
+  .modal-content {
+    width: 95%; /* ขยายให้เกือบเต็มจอมือถือ */
+    max-height: 90vh; /* เพิ่มความสูงอีกนิด */
+    border-radius: 12px;
+  }
+
+  .modal-header {
+    padding: 1rem; /* ลด Padding หัวข้อ */
+  }
+
+  .modal-header h2 {
+    font-size: 1.1rem; /* ลดขนาดตัวหนังสือหัวข้อ */
+  }
+
+  .modal-filter-tabs {
+    padding: 0.75rem 1rem; /* ลด Padding แถบ Tab */
+  }
+
+  .modal-tab-btn {
+    padding: 0.4rem 0.9rem; /* ปรับปุ่ม Tab ให้เล็กลงนิดหน่อยแต่ยังกดง่าย */
+    font-size: 0.85rem;
+  }
+
+  .modal-body {
+    padding: 1rem; /* ลด Padding เนื้อหา */
+  }
+
+  .menu-item-option {
+    padding: 0.8rem; /* ปรับขนาดรายการเมนู */
+    font-size: 0.95rem;
+  }
+}

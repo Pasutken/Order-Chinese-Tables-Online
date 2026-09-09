@@ -1,0 +1,220 @@
+/* =========================================
+   1. Action Bar (ส่วนปุ่มด้านบน)
+   ========================================= */
+.food-actions-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* ให้ปุ่มตกบรรทัดเมื่อจอเล็ก */
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* เงาฟุ้งๆ สบายตา */
+}
+
+.mp-btn-container {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* สไตล์ปุ่มทั่วไปใน Action Bar */
+.food-actions-container button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: white;
+  background-color: #4361ee; /* สีน้ำเงินหลัก */
+  box-shadow: 0 4px 6px rgba(67, 97, 238, 0.2);
+}
+
+.food-actions-container button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(67, 97, 238, 0.3);
+}
+
+.food-actions-container button.add-category-btn {
+  background-color: #2ec4b6; /* สีเขียวน้ำทะเล สำหรับปุ่มเพิ่มหมวดหมู่ */
+  box-shadow: 0 4px 6px rgba(46, 196, 182, 0.2);
+}
+
+/* =========================================
+   2. Package Container (Grid Layout)
+   ========================================= */
+.package-container {
+  display: grid;
+  /* Responsive Magic: ปรับจำนวนคอลัมน์อัตโนมัติตามความกว้างหน้าจอ */
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); 
+  gap: 24px;
+  padding-bottom: 40px;
+}
+
+/* =========================================
+   3. Package Card (การ์ดหมวดหมู่)
+   ========================================= */
+.package {
+  background-color: #ffffff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border: 1px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease;
+}
+
+.package:hover {
+  transform: translateY(-5px); /* ลอยขึ้นเล็กน้อยเมื่อเอาเมาส์ชี้ */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* หัวข้อการ์ด (ชื่อหมวดหมู่ + ปุ่มแก้ไข) */
+.packagename-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f5f7fa;
+}
+
+.packagename-container b {
+  font-size: 1.1rem;
+  color: #2b2d42;
+}
+
+.edit-btn {
+  background: transparent;
+  border: none;
+  color: #8d99ae;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  transition: color 0.2s;
+}
+
+.edit-btn:hover {
+  color: #4361ee;
+  background-color: #f0f4ff;
+}
+
+/* =========================================
+   4. Package Items (รายการอาหารในกล่อง)
+   ========================================= */
+.package-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f8f9fa;
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.package-item:hover {
+  border-color: #e0e0e0;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* ปุ่มชื่อแพ็คเกจ (ฝั่งซ้าย) */
+.package-item button:first-child {
+  border: none;
+  background: none;
+  text-align: left;
+  font-size: 14px;
+  color: #495057;
+  cursor: pointer;
+  flex-grow: 1; /* กินพื้นที่ว่างทั้งหมด */
+  display: flex;
+  flex-direction: column; /* เพื่อให้ ID ลงมาบรรทัดล่าง */
+}
+
+.package-item button:first-child:hover {
+  color: #4361ee;
+  font-weight: 600;
+}
+
+/* Note สำหรับ ID (ตัวเล็กๆ จางๆ) */
+.uncategorized-note {
+  font-size: 11px;
+  color: #adb5bd;
+  margin-top: 2px;
+}
+
+/* ปุ่มลบ (ฝั่งขวา) */
+.deletepackage-btn {
+  border: none;
+  background-color: #ffe5e5;
+  color: #ef233c;
+  width: 28px;
+  height: 28px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s;
+  flex-shrink: 0; /* ห้ามหดตัว */
+}
+
+.deletepackage-btn:hover {
+  background-color: #ef233c;
+  color: white;
+}
+
+/* =========================================
+   5. Uncategorized Section (หมวดหมู่พิเศษ)
+   ========================================= */
+.package-uncategorized {
+  border: 2px dashed #ffd43b; /* เส้นประสีเหลือง */
+  background-color: #fff9db; /* พื้นหลังสีเหลืองอ่อน */
+}
+
+.package-uncategorized .packagename-container b {
+  color: #e67700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.package-uncategorized .package-item {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+/* =========================================
+   6. Mobile Responsive
+   ========================================= */
+@media (max-width: 600px) {
+  .food-actions-container {
+    flex-direction: column;
+    align-items: stretch; /* ยืดปุ่มให้เต็มจอ */
+  }
+
+  .mp-btn-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .food-actions-container button {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .package-container {
+    grid-template-columns: 1fr; /* มือถือแสดง 1 แถว */
+  }
+}

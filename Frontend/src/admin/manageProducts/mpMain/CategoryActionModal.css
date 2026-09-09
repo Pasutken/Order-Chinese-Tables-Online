@@ -1,0 +1,68 @@
+/* ... (ส่วน .modal-backdrop, .modal-content, .modal-header, .modal-close-btn ... เหมือนเดิม) ... */
+
+/* (ใหม่) สไตล์สำหรับ form body */
+.modal-body-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 10px;
+}
+
+.modal-body-form label {
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.modal-body-form input {
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* (ใหม่) สไตล์สำหรับ Footer (ที่วางปุ่ม) */
+.modal-footer {
+  display: flex;
+  justify-content: space-between; /* ให้ปุ่มอยู่คนละฝั่ง */
+  margin-top: 1.5rem;
+  gap: 10px;
+}
+
+/* ... (สไตล์ .modal-action-btn เหมือนเดิม) ... */
+.modal-action-btn {
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: background-color 0.2s;
+}
+
+/* (แก้ไข) ลบ .btn-edit (สีเหลือง) ทิ้ง */
+
+/* (ใหม่) สไตล์ปุ่ม Save (สีฟ้า/เขียว) */
+.modal-action-btn.btn-save {
+  background-color: #198754; /* สีเขียว */
+  color: white;
+  border-color: #198754;
+  flex-grow: 1; /* ทำให้ปุ่มขยาย (ถ้าต้องการ) */
+}
+.modal-action-btn.btn-save:hover {
+  background-color: #157347;
+}
+
+/* (สไตล์ .btn-delete เหมือนเดิม) */
+.modal-action-btn.btn-delete {
+  background-color: #dc3545; /* สีแดง */
+  color: white;
+  border-color: #dc3545;
+  flex-grow: 1; 
+}
+.modal-action-btn.btn-delete:hover {
+  background-color: #c82333;
+}

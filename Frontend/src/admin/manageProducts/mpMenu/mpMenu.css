@@ -1,0 +1,314 @@
+/* --- 1. 🎨 Layout หลัก --- */
+.mpMenu-container {
+  max-width: 1400px; /* (ขยาย container ให้กว้างขึ้น) */
+  margin: 2rem auto;
+  padding: 1.5rem;
+}
+
+.mpMenu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* (เผื่อจอเล็ก) */
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1.5rem;
+}
+
+/* (ปุ่ม Back) */
+.mpback {
+  font-size: 2rem;
+  border: none;
+  background-color: transparent;
+  color: #6c757d;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.mpback:hover {
+  color: #007bff;
+}
+
+/* (ปุ่ม "เพิ่มเมนูใหม่") */
+.addMenu-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  background-color: #28a745; /* (สีเขียว) */
+  color: white;
+  padding: 0.75rem 1.25rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+.addMenu-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 2. 🌟 Layout (Sidebar + Content Grid) --- */
+.menulist-container {
+  display: flex;
+  flex-direction: row; /* (แนวนอนสำหรับ Desktop) */
+  gap: 2rem;
+}
+
+/* --- 3. 🧾 Sidebar (หมวดหมู่) --- */
+.mpMenu-sidebar {
+  flex: 0 0 250px; /* (ความกว้าง Sidebar 250px) */
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  padding: 1rem;
+  list-style-type: none; /* (ลบ bullet) */
+  margin: 0;
+  height: fit-content; /* (ให้ความสูงพอดีเนื้อหา) */
+}
+
+.mpMenu-sidebar li {
+  padding: 0.85rem 1.25rem;
+  font-weight: 500;
+  color: #343a40;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  margin-bottom: 0.25rem;
+}
+.mpMenu-sidebar li:hover {
+  background-color: #e9ecef;
+}
+
+/* (สไตล์ "ปุ่มที่ถูกเลือก") */
+.mpMenu-sidebar li.active {
+  background-color: #007bff;
+  color: white;
+  font-weight: 600;
+  box-shadow: 0 2px 4px rgba(0, 123, 255, 0.2);
+}
+.mpMenu-sidebar li.active:hover {
+  background-color: #0056b3;
+}
+
+/* --- 4. 🖼️ Content Grid (รายการเมนู) --- */
+.mpmenu-container {
+  flex: 1; /* (ให้ยืดเต็มพื้นที่ที่เหลือ) */
+  display: grid;
+  /* (Responsive Grid!) */
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* --- 5. 📇 การ์ดเมนู (Menu Item Card) --- */
+.menuItem-container {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column; /* (ให้เนื้อหาอยู่ใต้รูป) */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.menuItem-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+.itemIn-continer {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  gap: 0.5rem; /* (ระยะห่างระหว่าง รูป, ชื่อ, ราคา, ปุ่ม) */
+  flex-grow: 1; /* (ให้เนื้อหายืดเต็ม) */
+}
+
+.itemIn-continer img {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* (บังคับสัดส่วน 16:9) */
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.itemIn-continer b {
+  font-size: 1.25rem;
+  color: #212529;
+}
+.itemIn-continer b:last-of-type {
+  font-size: 1.15rem;
+  color: #007bff; /* (เน้นสีราคา) */
+}
+/* (คำอธิบาย) */
+.itemIn-continer > *:nth-child(3) {
+  font-size: 0.9rem;
+  color: #6c757d;
+  flex-grow: 1; /* (ดันปุ่มไปล่างสุด) */
+  min-height: 40px; /* (จองที่ให้ description) */
+}
+
+/* (Container ปุ่ม "แก้ไข" / "ลบ") */
+.menuItem-btn {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+.mp-edit-btn,
+.mp-delete-btn {
+  flex: 1; /* (ให้ปุ่มกว้างเท่ากัน) */
+  border: none;
+  border-radius: 6px;
+  padding: 0.75rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.mp-edit-btn {
+  background-color: #e9f5ff;
+  color: #0056b3;
+}
+.mp-edit-btn:hover {
+  background-color: #d1e9ff;
+}
+
+.mp-delete-btn {
+  background-color: #fff0f1;
+  color: #dc3545;
+}
+.mp-delete-btn:hover {
+  background-color: #ffe5e7;
+}
+
+/* --- 6. 📱 Responsive (สำหรับจอมือถือ) --- */
+@media (max-width: 768px) {
+  .mpMenu-container {
+    padding: 1rem;
+  }
+  
+  .menulist-container {
+    flex-direction: column; /* (Sidebar + Content เรียงแนวตั้ง) */
+  }
+
+  .mpMenu-sidebar {
+    flex: 1; /* (Reset flex-basis) */
+    width: 100%;
+    
+    /* (เปลี่ยน Sidebar เป็นแนวนอน) */
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* (สำคัญ!) */
+    padding: 0.5rem;
+    
+    /* (ซ่อน Scrollbar) */
+    -ms-overflow-style: none;  /* IE/Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .mpMenu-sidebar::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+  
+  .mpMenu-sidebar li {
+    flex: 0 0 auto; /* (ไม่ยืด/หด) */
+    white-space: nowrap; /* (ไม่ตัดคำ) */
+    padding: 0.5rem 1rem;
+    margin: 0 0.25rem;
+  }
+  
+  /* (Grid จะกลายเป็น 1 คอลัมน์อัตโนมัติ) */
+  .mpmenu-container {
+     grid-template-columns: 1fr;
+  }
+}
+
+/* --- 7. 📐 สไตล์สำหรับ Modal (เพิ่ม/แก้ไข) --- */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+  z-index: 1001;
+}
+
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* (จัดฟอร์มใน Modal) */
+.modal-content form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* (เว้นระยะห่างระหว่าง Form Groups) */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 600;
+  color: #333;
+}
+
+.form-group input,
+.modal-content select {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-sizing: border-box; 
+  font-size: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: flex-end; 
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.modal-buttons button {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s ease;
+}
+
+.btn-cancel {
+  background-color: #f0f0f0;
+  color: #333;
+}
+.btn-cancel:hover {
+  background-color: #ddd;
+}
+
+.btn-save {
+  background-color: #007bff;
+  color: white;
+}
+.btn-save:hover {
+  background-color: #0056b3;
+}

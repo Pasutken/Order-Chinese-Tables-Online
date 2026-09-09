@@ -1,0 +1,164 @@
+.summary-container {
+  font-family: 'Kanit', sans-serif;
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background: linear-gradient(135deg, #fff8f8 0%, #fff5f5 100%);
+  border-radius: 12px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e0e0e0;
+}
+
+.summary-container h1 {
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #c00;
+  padding-bottom: 15px;
+}
+
+.summary-section {
+  margin-bottom: 30px;
+}
+
+.summary-section h2 {
+  font-size: 1.5rem;
+  color: #c00;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 20px;
+  font-size: 1rem;
+}
+
+.info-grid strong {
+  font-weight: 500;
+  color: #555;
+}
+
+.info-grid span {
+  color: #222;
+  word-break: break-word;
+}
+
+.order-details {
+  background-color: #fafafa;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 15px;
+  border: 1px solid #f0f0f0;
+}
+
+.order-details h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.dish-list,
+.item-list {
+  list-style-type: none;
+  padding-left: 10px;
+  margin-bottom: 15px;
+}
+
+.dish-list li {
+  margin-bottom: 8px;
+  color: #444;
+}
+
+.item-list li {
+  margin-bottom: 10px;
+}
+
+.price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.price-row span {
+  color: #555;
+}
+
+.price-row strong {
+  font-weight: 600;
+  color: #111;
+  font-size: 1.1rem;
+}
+
+.grand-total-summary.final-total {
+  border-top: 2px dashed #ccc;
+  margin-top: 30px;
+  padding-top: 20px;
+}
+
+.grand-total-summary .summary-row.total {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.grand-total-summary .summary-row.total span:first-child {
+  color: #333;
+}
+
+.grand-total-summary .summary-row.total span:last-child {
+  color: #c00;
+}
+
+.summary-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.summary-actions button {
+  font-family: 'Kanit', sans-serif;
+  padding: 12px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.summary-actions .btn-back {
+  background-color: #f0f0f0;
+  color: #555;
+  border: 1px solid #ddd;
+}
+
+.summary-actions .btn-back:hover {
+  background-color: #e0e0e0;
+}
+
+.summary-actions .btn-confirm {
+  background-color: #c00;
+  color: white;
+  font-weight: 600;
+}
+
+.summary-actions .btn-confirm:hover {
+  opacity: 0.85;
+}
+
+.summary-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.summary-row total {
+  font-size: 1.8rem;
+  font-weight: bold;
+}

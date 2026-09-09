@@ -1,0 +1,762 @@
+openapi: 3.0.0
+info:
+  title: Order Chinese Tables Online API
+  version: 1.0.0
+  description: API documentation for Chinese restaurant online ordering system
+
+servers:
+  - url: http://localhost:3000
+    description: Development server
+
+paths:
+  /api/Register:
+    post:
+      summary: Register new user
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              username: "สมชาย"
+              lastname: "ใจดี"
+              password: "password123"
+              phone: "0812345678"
+      responses:
+        200:
+          description: Register successful
+          content:
+            application/json:
+              example:
+                message: "Register page"
+        400:
+          description: Phone already exists
+          content:
+            application/json:
+              example:
+                error: "Phone number already exists"
+        500:
+          description: Server error
+          content:
+            application/json:
+              example:
+                error: "Internal Server Error"
+
+  /api/login:
+    post:
+      summary: User login
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              phone: "0812345678"
+              password: "password123"
+      responses:
+        200:
+          description: Login successful
+          content:
+            application/json:
+              example:
+                message: "Login page"
+                token: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+                role: "customer"
+        401:
+          description: Invalid credentials
+          content:
+            application/json:
+              example:
+                error: "Invalid password"
+
+  /api/ForgotPassword:
+    post:
+      summary: Request password reset
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              phone: "0812345678"
+      responses:
+        200:
+          description: Verification sent
+          content:
+            application/json:
+              example:
+                message: "Verify"
+        404:
+          description: User not found
+          content:
+            application/json:
+              example:
+                error: "User not found"
+
+  /api/ResetPassword:
+    put:
+      summary: Reset user password
+      tags: [Authentication]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              phone: "0812345678"
+              newPassword: "newpassword123"
+      responses:
+        200:
+          description: Password reset successful
+          content:
+            application/json:
+              example:
+                message: "Password reset successfully"
+        404:
+          description: User not found
+          content:
+            application/json:
+              example:
+                error: "User not found"
+
+  /api/google:
+    get:
+      summary: Google OAuth login
+      tags: [Authentication]
+      responses:
+        302:
+          description: Redirect to Google login
+
+  /api/google/callback:
+    get:
+      summary: Google OAuth callback
+      tags: [Authentication]
+      responses:
+        302:
+          description: Redirect to frontend with token
+
+  /api/checkstatus:
+    get:
+      summary: Get user's orders
+      tags: [Orders]
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                record:
+                  - cid: "ORD001"
+                    uid: "USER001"
+                    username: "สมชาย"
+                    lastname: "ใจดี"
+                    phone: "0812345678"
+                    WorkDate: "2025-12-25"
+                    WorkTime: "18:00"
+                    table: 5
+                    totalPrice: 8990
+                    status: "in-progress"
+                    payment: "cash"
+                    createdAt: "2025-11-16T10:00:00Z"
+        500:
+          description: Server error
+          content:
+            application/json:
+              example:
+                message: "server Error"
+
+  /api/DataOrdering:
+    get:
+      summary: Get all in-progress orders
+      tags: [Orders]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                Ordering:
+                  - cid: "ORD001"
+                    uid: "USER001"
+                    username: "สมชาย"
+                    lastname: "ใจดี"
+                    phone: "0812345678"
+                    WorkDate: "2025-12-25"
+                    WorkTime: "18:00"
+                    table: 5
+                    totalPrice: 8990
+                    status: "in-progress"
+                    payment: "cash"
+                    createdAt: "2025-11-16T10:00:00Z"
+                message: "Success"
+        500:
+          description: Server error
+          content:
+            application/json:
+              example:
+                error: "Internal Server Error"
+
+  /api/DataOrderChagedetail:
+    get:
+      summary: Get all orders in change processing status
+      tags: [Orders]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                detail:
+                  - cid: "ORD002"
+                    uid: "USER001"
+                    username: "สมชาย"
+                    status: "Order-Change-Processing"
+                    changeRequest:
+                      WorkDate: "2025-12-26"
+                      WorkTime: "19:00"
+                      table: 6
+                      totalPrice: 9990
+                message: "Success"
+        500:
+          description: Server error
+
+  /api/DataOrderChagedetail/{Cid}:
+    get:
+      summary: Get specific order by Cid
+      tags: [Orders]
+      parameters:
+        - name: Cid
+          in: path
+          required: true
+          example: "ORD001"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                detail:
+                  cid: "ORD001"
+                  uid: "USER001"
+                  username: "สมชาย"
+                  lastname: "ใจดี"
+                  phone: "0812345678"
+                  WorkDate: "2025-12-25"
+                  WorkTime: "18:00"
+                  table: 5
+                  totalPrice: 8990
+                  status: "in-progress"
+                  payment: "cash"
+                message: "Success"
+        404:
+          description: Order not found
+          content:
+            application/json:
+              example:
+                message: "Order not found"
+
+  /api/DataOrdercid/{uid}:
+    get:
+      summary: Get orders by customer uid
+      tags: [Orders]
+      parameters:
+        - name: uid
+          in: path
+          required: true
+          example: "USER001"
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                detail:
+                  - cid: "ORD001"
+                    uid: "USER001"
+                    username: "สมชาย"
+                    WorkDate: "2025-12-25"
+                    status: "completed"
+                    totalPrice: 8990
+                message: "Success"
+
+  /api/DataOrderAllNoTeam:
+    get:
+      summary: Get in-progress orders without team assignment
+      tags: [Orders]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                AllNoTeam:
+                  - cid: "ORD001"
+                    uid: "USER001"
+                    username: "สมชาย"
+                    status: "in-progress"
+                    assignedTeam: null
+                message: "Success"
+        500:
+          description: Server error
+
+  /api/DataOrderAllWithTeam:
+    get:
+      summary: Get orders with team assignment
+      tags: [Orders]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                AllTeam:
+                  - cid: "ORD001"
+                    uid: "USER001"
+                    username: "สมชาย"
+                    status: "Assigned-To-Team"
+                    assignedTeam:
+                      _id: "TEAM001"
+                      teamName: "Team A"
+                      leader: "นายเจมส์"
+                      memberCount: 3
+                message: "Success"
+        500:
+          description: Server error
+
+  /api/DeleteOrderafterReject/{Cid}:
+    put:
+      summary: Reject change request for order
+      tags: [Orders]
+      parameters:
+        - name: Cid
+          in: path
+          required: true
+          example: "ORD001"
+      responses:
+        200:
+          description: Change request rejected
+          content:
+            application/json:
+              example:
+                detail:
+                  cid: "ORD001"
+                  status: "in-progress"
+                  changeRequest: null
+                message: "ปฏิเสธคำขอเรียบร้อยแล้ว (กลับไปใช้ข้อมูลเดิม)"
+        404:
+          description: Order not found
+
+  /api/DeleteOrderafterAcccept/{Cid}:
+    put:
+      summary: Accept change request for order
+      tags: [Orders]
+      parameters:
+        - name: Cid
+          in: path
+          required: true
+          example: "ORD001"
+      responses:
+        200:
+          description: Change request accepted
+          content:
+            application/json:
+              example:
+                detail:
+                  cid: "ORD001"
+                  WorkDate: "2025-12-26"
+                  WorkTime: "19:00"
+                  table: 6
+                  totalPrice: 9990
+                  status: "in-progress"
+                  changeRequest: null
+                message: "อนุมัติการแก้ไขเรียบร้อยแล้ว (ข้อมูลถูกอัปเดต)"
+        404:
+          description: Order not found
+
+  /api/Dashboard_DataOrderNow:
+    get:
+      summary: Count today's orders
+      tags: [Dashboard]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                orderNow: 15
+                message: "Success"
+        500:
+          description: Server error
+
+  /api/Dashboard_DataOrderInYear:
+    get:
+      summary: Count orders in current year
+      tags: [Dashboard]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                orderInYear: 450
+                message: "Success"
+        500:
+          description: Server error
+
+  /api/Dashboard_DataOrderByMonth:
+    get:
+      summary: Get orders by month for current year
+      tags: [Dashboard]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                ordersByMonth:
+                  - month: "มกราคม"
+                    orderAmount: 30
+                  - month: "กุมภาพันธ์"
+                    orderAmount: 28
+                  - month: "มีนาคม"
+                    orderAmount: 45
+                  - month: "เมษายน"
+                    orderAmount: 35
+                  - month: "พฤษภาคม"
+                    orderAmount: 40
+                  - month: "มิถุนายน"
+                    orderAmount: 38
+                  - month: "กรกฎาคม"
+                    orderAmount: null
+                  - month: "สิงหาคม"
+                    orderAmount: null
+                  - month: "กันยายน"
+                    orderAmount: null
+                  - month: "ตุลาคม"
+                    orderAmount: null
+                  - month: "พฤศจิกายน"
+                    orderAmount: null
+                  - month: "ธันวาคม"
+                    orderAmount: null
+                message: "Success"
+        500:
+          description: Server error
+
+  /api/Dashboard_DataOrderChage:
+    get:
+      summary: Count orders in change processing status
+      tags: [Dashboard]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                orderChage: 5
+                message: "Success"
+        500:
+          description: Server error
+
+  /api/teams:
+    get:
+      summary: Get all teams
+      tags: [Teams]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                teams:
+                  - _id: "TEAM001"
+                    teamName: "Team A"
+                    leader: "นายเจมส์"
+                    memberCount: 3
+                  - _id: "TEAM002"
+                    teamName: "Team B"
+                    leader: "นางสาวแอน"
+                    memberCount: 4
+    post:
+      summary: Create new team
+      tags: [Teams]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              teamName: "Team A"
+              leader: "นายเจมส์"
+              memberCount: 3
+      responses:
+        200:
+          description: Team created
+          content:
+            application/json:
+              example:
+                team:
+                  _id: "TEAM001"
+                  teamName: "Team A"
+                  leader: "นายเจมส์"
+                  memberCount: 3
+
+  /api/teams/{id}:
+    put:
+      summary: Update team
+      tags: [Teams]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          example: "TEAM001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              memberCount: 4
+      responses:
+        200:
+          description: Team updated
+          content:
+            application/json:
+              example:
+                team:
+                  _id: "TEAM001"
+                  memberCount: 4
+
+  /api/assignTeam/{id}:
+    put:
+      summary: Assign team to order
+      tags: [Teams]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          example: "ORDER001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              teamId: "TEAM001"
+      responses:
+        200:
+          description: Team assigned
+          content:
+            application/json:
+              example:
+                order:
+                  _id: "ORDER001"
+                  cid: "ORD001"
+                  status: "Assigned-To-Team"
+                  assignedTeam:
+                    _id: "TEAM001"
+                    teamName: "Team A"
+
+  /api/updateRecordStatus/{id}:
+    put:
+      summary: Update order status
+      tags: [Teams]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          example: "ORDER001"
+      responses:
+        200:
+          description: Status updated
+
+  /api/allcancelorder:
+    get:
+      summary: Get all cancelled orders with payback
+      tags: [Orders]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                - cid: "ORD003"
+                  status: "cancelled"
+                  payback: true
+                  totalPrice: 8990
+
+  /api/paybackcheck/{id}:
+    put:
+      summary: Mark payback as completed
+      tags: [Orders]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          example: "ORDER001"
+      responses:
+        200:
+          description: Payback completed
+          content:
+            application/json:
+              example:
+                message: "ลบ payback เรียบร้อย"
+                record:
+                  _id: "ORDER001"
+                  status: "cancelled"
+
+  /api/menus:
+    get:
+      summary: Get all menu packages
+      tags: [Menus]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                - _id: "PKG001"
+                  price: 8990
+                - _id: "PKG002"
+                  price: 12990
+
+  /api/products:
+    get:
+      summary: Get all available menu items
+      tags: [Products]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                - _id: "ITEM001"
+                  itemName: "ไก่อบเกาหลี"
+                  price: 350
+                  available: true
+                - _id: "ITEM002"
+                  itemName: "ปลาสามรส"
+                  price: 450
+                  available: true
+
+  /api/drink-sets:
+    get:
+      summary: Get all drink sets
+      tags: [Drinks]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                - _id: "DRINK001"
+                  name: "เซ็ตเครื่องดื่ม"
+                  price: 200
+
+  /api/contacts:
+    post:
+      summary: Submit contact message
+      tags: [Contact]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              name: "สมชาย ใจดี"
+              emailOrPhone: "somchai@example.com"
+              message: "มีคำถามเกี่ยวกับการสั่งซื้อ"
+      responses:
+        200:
+          description: Message submitted
+          content:
+            application/json:
+              example:
+                message: "ข้อมูลถูกบันทึกเรียบร้อยแล้ว"
+
+  /api/contact:
+    get:
+      summary: Get all contact messages
+      tags: [Contact]
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                - _id: "MSG001"
+                  name: "สมชาย ใจดี"
+                  emailOrPhone: "somchai@example.com"
+                  message: "มีคำถามเกี่ยวกับการสั่งซื้อ"
+                  isRead: false
+                  createdAt: "2025-11-16T10:00:00Z"
+
+  /api/username:
+    get:
+      summary: Get current user profile
+      tags: [Users]
+      security:
+        - bearerAuth: []
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              example:
+                _id: "USER001"
+                username: "สมชาย"
+                lastname: "ใจดี"
+                phone: "0812345678"
+                email: "somchai@example.com"
+                role: "customer"
+
+  /api/users/id/{id}:
+    put:
+      summary: Update user information
+      tags: [Users]
+      parameters:
+        - name: id
+          in: path
+          required: true
+          example: "USER001"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              username: "สมชาย"
+              lastname: "ใจดี"
+              email: "newemail@example.com"
+      responses:
+        200:
+          description: User updated
+          content:
+            application/json:
+              example:
+                _id: "USER001"
+                username: "สมชาย"
+                lastname: "ใจดี"
+                email: "newemail@example.com"
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+tags:
+  - name: Authentication
+    description: User authentication endpoints
+  - name: Orders
+    description: Order management endpoints
+  - name: Dashboard
+    description: Dashboard analytics endpoints
+  - name: Teams
+    description: Team management endpoints
+  - name: Menus
+    description: Menu and package endpoints
+  - name: Products
+    description: Menu items and products
+  - name: Drinks
+    description: Drink sets and categories
+  - name: Contact
+    description: Contact message endpoints
+  - name: Users
+    description: User profile endpoints

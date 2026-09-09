@@ -1,0 +1,64 @@
+/* --- 1. Container หลักของ Sliding Toggle Bar --- */
+.sliding-toggle-bar {
+  display: flex; /* จัดเรียงปุ่มและตัวเลื่อน */
+  position: relative; /* สำคัญ: เพื่อให้ indicator ตำแหน่งสัมพันธ์ */
+  width: 500px; /* กำหนดความกว้างรวมของแถบ (ปรับได้) */
+  margin: 2rem auto; /* จัดกลาง */
+  background-color: #e0e0e0; /* สีพื้นหลังของแถบ */
+  border-radius: 8px; /* ขอบโค้งมน */
+  overflow: hidden; /* ซ่อนส่วนเกินของ indicator */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 2. ซ่อน Input Radio จริงๆ --- */
+.sliding-toggle-bar input[type="radio"] {
+  display: none;
+}
+
+/* --- 3. สไตล์ของ Label (ปุ่มที่มองเห็น) --- */
+.sliding-toggle-bar label {
+  flex: 1; /* ทำให้แต่ละ Label ขยายเต็มพื้นที่เท่าๆ กัน */
+  text-align: center;
+  padding: 1rem 0.5rem;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #555; /* สีข้อความปกติ */
+  transition: color 0.3s ease; /* transition สีข้อความ */
+  z-index: 1; /* ให้อยู่เหนือ indicator */
+}
+
+/* --- 4. สไตล์ Label ตอน Active (ถูกเลือก) --- */
+.sliding-toggle-bar label.active {
+  color: #ffffff; /* สีข้อความตอน active (ตัดกับสี indicator) */
+}
+
+/* --- 5. สไตล์ของ Indicator (ตัวสไลด์) --- */
+.sliding-toggle-bar .indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 50%; /* 50% เพราะมี 2 ตัวเลือก */
+  background-color: #007bff; /* สีของตัวสไลด์ (สี Primary) */
+  border-radius: 8px; /* ขอบโค้งมนตาม container */
+  transition: transform 0.3s ease-in-out; /* ทำให้สไลด์นุ่มนวล */
+  z-index: 0; /* ให้อยู่ใต้ label */
+}
+
+/* --- 6. (สำคัญ) ควบคุม Indicator ด้วย Radio Checked --- */
+/* เมื่อ radio #food-toggle ถูกเลือก */
+.sliding-toggle-bar input[id="food-toggle"]:checked ~ .indicator {
+  transform: translateX(0%); /* ตัวสไลด์อยู่ซ้ายสุด */
+}
+
+/* เมื่อ radio #drink-toggle ถูกเลือก */
+.sliding-toggle-bar input[id="drink-toggle"]:checked ~ .indicator {
+  transform: translateX(100%); /* ตัวสไลด์เลื่อนไปขวาสุด (เต็ม 100% ของตัวเอง) */
+}
+
+/* --- สไตล์เพิ่มเติม (ถ้าอยากได้เส้นคั่นตรงกลาง) --- */
+/* (คุณอาจจะเพิ่มเส้นคั่นด้วย pseudo-element ได้ ถ้าต้องการ) */
+/* .sliding-toggle-bar label:first-of-type {
+  border-right: 1px solid #c0c0c0; 
+} */

@@ -1,0 +1,189 @@
+/* Dashbord.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.Page-menu {
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* เพิ่ม overflow เพื่อป้องกันการเลื่อนหลุดจอ */
+    overflow-x: hidden; 
+}
+
+/* Sidebar */
+.sidebar-menu {
+    width: 250px;
+    background: linear-gradient(180deg, #4a3f3f 0%, #2d2424 100%);
+    color: white;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease; /* เพิ่ม Animation นุ่มนวล */
+    flex-shrink: 0; /* ป้องกันเมนูหดตัว */
+}
+
+.sidebar-menu h1:first-child {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 30px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-menu h1 {
+    font-size: 14px;
+    font-weight: 400;
+    margin: 15px 0;
+    padding: 12px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.sidebar-menu h1:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Page Content */
+.Page-content {
+    flex: 1;
+    background: linear-gradient(135deg, #f5e6e6 0%, #e8d4d4 100%);
+    padding: 30px;
+    width: 100%; /* มั่นใจว่าเนื้อหาเต็มพื้นที่ */
+}
+
+/* Dashboard Grid */
+.dashbord {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto; /* จัดกึ่งกลาง */
+}
+
+/* Dashboard Cards */
+.dashbord > div {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.dashbord h1 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #4a3f3f;
+    margin-bottom: 20px;
+}
+
+.dashbord p {
+    font-size: 48px;
+    font-weight: 700;
+    color: #2d2424;
+    margin: 0;
+    /* ป้องกันตัวเลขล้นบรรทัด */
+    word-wrap: break-word; 
+}
+
+/* Graph Section */
+.dashbord-graph {
+    grid-column: 1 / -1; /* กินพื้นที่ทุกคอลัมน์ */
+    min-height: 300px;
+}
+
+.graph-placeholder {
+    width: 100%;
+    height: 250px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 14px;
+}
+
+.graph-container {
+    width: 100%;
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow-x: auto; /* ถ้ากราฟกว้างเกิน ให้เลื่อนแนวนอนได้ */
+}
+
+.recharts-legend-wrapper {
+    padding-top: 20px !important;
+}
+
+.recharts-legend-item {
+    margin-right: 20px !important;
+}
+
+/* --- Responsive Design --- */
+
+/* Tablet & Mobile (หน้าจอเล็กกว่า 768px) */
+@media (max-width: 768px) {
+    .Page-menu {
+        flex-direction: column; /* เปลี่ยนเลย์เอาต์เป็นแนวตั้ง */
+    }
+    
+    .sidebar-menu {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .sidebar-menu h1:first-child {
+        margin-bottom: 15px;
+        text-align: center;
+    }
+    
+    /* ปรับเมนูให้เรียงแนวนอนและเลื่อนได้ (ถ้าต้องการ) หรือเรียงลงมา */
+    .sidebar-menu h1:not(:first-child) {
+        margin: 5px 0;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.05); /* ใส่พื้นหลังจางๆ ให้ดูเป็นปุ่มชัดขึ้น */
+    }
+
+    .Page-content {
+        padding: 15px; /* ลด padding ของเนื้อหา */
+    }
+    
+    .dashbord {
+        grid-template-columns: 1fr; /* เปลี่ยนเป็น 1 คอลัมน์ */
+        gap: 15px;
+    }
+
+    .dashbord > div {
+        padding: 20px; /* ลด padding ในการ์ด */
+    }
+
+    .dashbord p {
+        font-size: 36px; /* ลดขนาดตัวเลขลง */
+    }
+    
+    .graph-placeholder {
+        height: 200px; /* ลดความสูงกราฟ */
+    }
+}
+
+/* Small Mobile (หน้าจอเล็กกว่า 480px) */
+@media (max-width: 480px) {
+    .sidebar-menu h1 {
+        font-size: 13px; /* ลดขนาดฟอนต์เมนู */
+    }
+
+    .dashbord h1 {
+        font-size: 14px;
+    }
+    
+    .dashbord p {
+        font-size: 32px; /* ลดขนาดตัวเลขอีกนิด */
+    }
+}

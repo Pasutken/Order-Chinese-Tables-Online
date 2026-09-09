@@ -1,0 +1,128 @@
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  animation: fadeIn 0.3s ease-out;
+  padding: 20px; /* เพิ่ม padding กันขอบจอ */
+}
+
+.modal-content {
+  background: white;
+  padding: 2rem;
+  border-radius: 20px;
+  width: 100%;     /* เปลี่ยนเป็น 100% แต่ถูกจำกัดด้วย max-width */
+  max-width: 400px;
+  animation: slideUp 0.5s ease-out;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  
+  /* เพิ่มส่วนนี้เพื่อรองรับมือถือแนวนอน (Landscape) */
+  max-height: 90vh; 
+  overflow-y: auto;
+}
+
+/* OTP Input Styling */
+.otp-container {
+  text-align: center;
+  width: 100%;
+}
+
+.otp-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.otp-inputs {
+  display: flex;
+  justify-content: center;
+  gap: 10px; /* ใช้ gap ควบคุมระยะห่างแทน margin */
+  margin: 1.5rem 0;
+  flex-wrap: nowrap; /* ห้ามตกบรรทัด */
+}
+
+.otp-inputs input {
+  width: 50px;  /* ขยายให้กดง่ายขึ้นใน Desktop/Tablet */
+  height: 50px;
+  text-align: center;
+  font-size: 1.4rem;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  /* ลบ margin ออก แล้วใช้ gap ของ parent แทนเพื่อความแม่นยำ */
+  margin: 0; 
+  transition: all 0.3s ease;
+  
+  /* ป้องกัน iOS ซูมเองเวลากด */
+  font-size: 16px; 
+}
+
+.otp-inputs input:focus {
+  border-color: #f9a825;
+  box-shadow: 0 0 8px rgba(249, 168, 37, 0.3);
+  transform: scale(1.05);
+  outline: none;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
+   📱 Responsive Media Queries
+   ========================================= */
+
+/* สำหรับมือถือทั่วไป (กว้างไม่เกิน 480px) */
+@media (max-width: 480px) {
+  .modal-content {
+    padding: 1.5rem; /* ลด padding ด้านใน */
+  }
+
+  .otp-inputs {
+    gap: 8px; /* ลดระยะห่างระหว่างช่อง */
+  }
+
+  .otp-inputs input {
+    width: 45px; /* ปรับขนาดให้พอดีนิ้วแต่ไม่ใหญ่เกิน */
+    height: 45px;
+    font-size: 1.2rem;
+    border-radius: 8px;
+  }
+}
+
+/* สำหรับมือถือจอเล็กมาก (กว้างไม่เกิน 360px) */
+@media (max-width: 360px) {
+  .modal-content {
+    padding: 1.2rem;
+  }
+
+  .otp-inputs {
+    gap: 5px; /* ลดระยะห่างให้ชิดขึ้น */
+  }
+
+  .otp-inputs input {
+    width: 35px; /* ลดขนาดลงอีกเพื่อไม่ให้ล้นจอ */
+    height: 40px;
+    font-size: 1rem;
+  }
+}

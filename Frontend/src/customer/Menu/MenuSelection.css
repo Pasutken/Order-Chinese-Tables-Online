@@ -1,0 +1,774 @@
+/* --- ส่วนเมนูอาหาร (Menu) --- */
+.menu-container {
+  max-width: 1000%;
+  margin: 0 auto;
+  padding: 40px 20px;
+  background: #ffffff;
+  min-height: 100vh;
+  font-family: "Prompt", sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(135deg, #fff8f8 0%, #fff5f5 100%);
+}
+
+.menu-title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 50px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.rows-container {
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.row-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.row-selection {
+  font-size: 18px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 20px;
+  min-height: 28px;
+}
+
+.row-grid {
+  display: grid;
+  gap: 40px;
+  justify-content: center;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.row-grid-1 {
+  grid-template-columns: repeat(1, minmax(200px, 280px));
+}
+.row-grid-2 {
+  grid-template-columns: repeat(2, minmax(200px, 280px));
+}
+.row-grid-3 {
+  grid-template-columns: repeat(3, minmax(200px, 280px));
+}
+.row-grid-4 {
+  grid-template-columns: repeat(4, minmax(200px, 280px));
+}
+
+.menu-item {
+  background: #fff;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  overflow: hidden;
+  text-align: center;
+  transition: all 0.25s ease;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+}
+
+.menu-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.menu-item.selected {
+  border: 3px solid #facc15;
+  box-shadow: 0 4px 12px rgba(250, 204, 21, 0.4);
+}
+
+.menu-item img {
+  width: 120px;
+  height: auto;
+  margin-bottom: 8px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.menu-text {
+  margin: 8px 0 12px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  padding: 0 8px;
+}
+
+.no-image {
+  width: 120px;
+  height: 90px;
+  background: #f3f4f6;
+  border-radius: 8px;
+  margin: 0 auto 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #9ca3af;
+  font-size: 12px;
+  border: 1px dashed #d1d5db;
+}
+
+/* --- ส่วนเครื่องดื่ม --- */
+.drink-section {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto 0;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.drink-title {
+  font-size: 28px;
+  font-weight: 800;
+  margin-bottom: 30px;
+  color: #111827;
+  letter-spacing: 1px;
+}
+
+.drink-tab-switcher {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  background-color: #f3f4f6;
+  border-radius: 12px;
+  padding: 6px;
+  border: 1px solid #e5e7eb;
+}
+
+.tab-btn {
+  font-family: "Kanit", sans-serif;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: transparent;
+  color: #4b5563;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  background-color: #fef08a;
+  color: #1f2937;
+}
+
+.tab-btn.active {
+  background-color: #ffffff;
+  color: #b45309;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.drink-set-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  width: 100%;
+}
+
+.drink-set-card {
+  background: #ffffff;
+  border: 2px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.drink-set-card:hover {
+  border-color: #fde68a;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  transform: translateY(-3px);
+}
+
+.drink-set-card.selected {
+  border-color: #facc15;
+  background-color: #fefce8;
+  box-shadow: 0 8px 24px rgba(250, 204, 21, 0.3);
+}
+
+.set-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.set-description {
+  font-size: 15px;
+  color: #4b5563;
+  margin-bottom: 16px;
+  min-height: 45px;
+}
+
+.set-price {
+  font-size: 18px;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.drink-individual-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 100%;
+}
+
+.drink-category {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+}
+
+.drink-category-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #facc15;
+  text-align: left;
+}
+
+.drink-items {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.drink-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: #fdfdfd;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.drink-card:hover {
+  border-color: #fde68a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.drink-header {
+  font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.drink-price {
+  font-size: 14px;
+  color: #f59e0b;
+}
+
+.drink-controls {
+  margin-top: 12px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 4px 8px;
+}
+
+.quantity-control button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #facc15;
+  color: #111827;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  padding: 0;
+}
+
+.quantity-control button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.quantity-control button:hover:not(:disabled) {
+  background: #f59e0b;
+}
+
+.quantity-display {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.selected-summary-inline {
+  font-size: 15px;
+  color: #16a34a;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* --- จำนวนโต๊ะ --- */
+.table-count-section {
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto 0;
+  padding: 24px;
+  background: #f9fafb;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.table-count-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 20px;
+}
+
+.table-input-control {
+  justify-content: center;
+  padding: 0;
+  background: #fff;
+}
+
+.table-count-input {
+  font-family: "Kanit", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #111827;
+  width: 80px;
+  text-align: center;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  padding: 8px;
+  -moz-appearance: textfield;
+}
+
+.table-count-input::-webkit-outer-spin-button,
+.table-count-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* --- Add-on Food (ออกแบบใหม่) --- */
+.addon-food-section {
+  width: 100%;
+  max-width: 1000px;
+  margin: 40px auto 0;
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.07);
+  transition: all 0.3s ease;
+}
+
+.addon-food-section:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.addon-header {
+  /* background: linear-gradient(135deg, #fefce8, #fffbeb); */
+  padding: 18px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid #fde68a;
+  transition: background 0.3s ease;
+}
+
+/* .addon-header:hover {
+  background: linear-gradient(135deg, #fde68a, #fef3c7);
+} */
+
+.addon-title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.addon-title span {
+  font-size: 16px;
+  font-weight: 500;
+  color: #f59e0b;
+  background: #fff;
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid #fde68a;
+}
+
+.toggle-btn {
+  background: #facc15;
+  color: #b45309;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-family: "Kanit", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.3);
+}
+
+.toggle-btn:hover {
+  background: #d97706;
+  transform: translateY(-1px);
+  color: #111827;
+}
+
+.addon-food-content {
+  padding: 20px 24px;
+}
+
+.no-addons {
+  text-align: center;
+  color: #9ca3af;
+  font-style: italic;
+  padding: 20px;
+}
+
+.addon-food-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  width: 100%;
+}
+
+.addon-card {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.addon-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: #fde68a !important;
+}
+
+.addon-image {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #e5e7eb;
+}
+
+.addon-image-placeholder {
+  width: 100%;
+  height: 100px;
+  background: #f3f4f6;
+  border-radius: 10px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #9ca3af;
+  border: 1px dashed #d1d5db;
+}
+
+.addon-name {
+  font-weight: 600;
+  color: #1f2937;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px;
+  display: block;
+}
+
+/* --- สรุปยอด --- */
+.grand-total-summary {
+  margin-top: 40px;
+  padding: 24px;
+  /* background: linear-gradient(135deg, #fefce8, #fffbeb); */
+  border: 2px solid #facc15;
+  border-radius: 16px;
+  text-align: left;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 8px 20px rgba(250, 204, 21, 0.2);
+}
+
+.grand-total-summary h3 {
+  margin: 0 0 20px;
+  font-size: 22px;
+  color: #1f2937;
+  text-align: center;
+  border-bottom: 1px solid #fde68a;
+  padding-bottom: 16px;
+}
+
+.summary-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  color: #374151;
+  margin-bottom: 12px;
+}
+
+.summary-row span:first-child {
+  font-weight: 500;
+}
+
+.summary-row span:last-child {
+  font-weight: 600;
+  color: #111827;
+}
+
+.summary-divider {
+  height: 1px;
+  background-color: #fde68a;
+  margin: 16px 0;
+}
+
+.summary-row.total {
+  font-size: 20px;
+}
+
+.summary-row.total span {
+  font-weight: 700;
+}
+
+.summary-row.total span:last-child {
+  color: #dc2626;
+  font-size: 22px;
+}
+
+.booking-button-container {
+  text-align: center;
+  margin: 40px 0 20px 0;
+}
+
+.proceed-to-booking-btn {
+  background-color: #facc15;
+  color: #b45309;
+  font-family: "Kanit", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(251, 146, 60, 0.2);
+  transition: all 0.3s ease;
+}
+
+.proceed-to-booking-btn:hover {
+  background-color: #f59e0b;
+  color: #111827;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(251, 146, 60, 0.3);
+}
+
+.addon-food-content {
+  padding: 20px 24px;
+} 
+.addon-search-input {
+  font-family: "Kanit", sans-serif;
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 20px;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-size: 16px;
+  color: #1f2937;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.addon-search-input:focus {
+  border-color: #facc15;
+
+  box-shadow: 0 0 0 3px rgba(250, 204, 21, 0.3);
+}
+.addon-food-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 20px;
+
+  width: 100%;
+} 
+
+/* เพิ่ม/แก้ไข CSS สำหรับ Add-on Grid ให้มี Scrollbar และจำกัดความสูง */
+.addon-food-grid {
+    display: grid;
+    /* ปรับขนาดคอลัมน์ให้อัตโนมัติ (เช่น 3 คอลัมน์สำหรับหน้าจอขนาดปกติ) */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); 
+    gap: 15px;
+    padding: 10px;
+    
+    /* <--- การเปลี่ยนแปลงหลักสำหรับการจัดการรายการจำนวนมาก ---> */
+    max-height: 450px; /* จำกัดความสูงไม่ให้ยาวเกินไป (ประมาณ 2 แถวครึ่ง) */
+    overflow-y: scroll; /* ทำให้เลื่อนได้เมื่อรายการเกินความสูง */
+    /* <--- End การเปลี่ยนแปลงหลัก ---> */
+}
+
+/* ---------------------------------------------------------------- */
+
+/* CSS สำหรับ Pagination Controls */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 5px;
+  flex-wrap: wrap; /* เพื่อให้ปุ่มขึ้นบรรทัดใหม่ได้ถ้าจำนวนหน้าเยอะมาก */
+}
+
+.pagination-controls button {
+  padding: 8px 15px;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.2s;
+  min-width: 40px;
+  font-family: inherit; /* ใช้ font เดียวกันกับส่วนอื่น */
+}
+
+.pagination-controls button:hover:not(:disabled),
+.pagination-controls button.active-page {
+  background-color: #facc15; /* สีน้ำเงิน */
+  color: black;
+  border-color: #facc15;
+}
+
+.pagination-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (max-width: 768px) {
+  .drink-items,
+  .addon-food-grid {
+    grid-template-columns: 1fr;
+  }
+  .addon-search-input {
+    font-size: 14px;
+
+    padding: 10px 12px;
+  }
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .row-grid-4 {
+    grid-template-columns: repeat(3, minmax(180px, 1fr));
+  }
+  .row-grid-3 {
+    grid-template-columns: repeat(2, minmax(180px, 1fr));
+  }
+  .menu-title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-container {
+    padding: 30px 15px;
+  }
+  .menu-title {
+    font-size: 22px;
+    margin-bottom: 40px;
+  }
+  .rows-container {
+    gap: 50px;
+  }
+  .row-grid-4,
+  .row-grid-3,
+  .row-grid-2 {
+    grid-template-columns: repeat(2, minmax(160px, 1fr));
+    gap: 30px;
+  }
+  .drink-items,
+  .addon-food-grid {
+    grid-template-columns: 1fr;
+  }
+  .addon-title {
+    font-size: 20px;
+  }
+  .addon-title span {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .menu-title {
+    font-size: 20px;
+  }
+  .row-selection {
+    font-size: 16px;
+  }
+  .row-grid-4,
+  .row-grid-3,
+  .row-grid-2,
+  .row-grid-1 {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  .addon-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 12px;
+  }
+  .toggle-btn {
+    width: 100%;
+    max-width: 200px;
+  }
+}

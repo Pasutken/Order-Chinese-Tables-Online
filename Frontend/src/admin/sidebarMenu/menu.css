@@ -1,0 +1,180 @@
+/* menu.css - Professional Style (No Root) */
+
+/* Import Font (ถ้ายังไม่มีใน index.html) */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+.Page-menu {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Kanit', sans-serif;
+  overflow: hidden;
+  background-color: #f1f5f9; /* สีพื้นหลังเนื้อหา (สีเทาอ่อนสบายตา) */
+}
+
+/* --- Sidebar Design --- */
+.sidebar-menu {
+  width: 280px;
+  background-color: #1e293b; /* สีน้ำเงินเข้ม (Slate 800) */
+  color: white;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.5rem;
+  flex-shrink: 0;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.05); /* เงาบางๆ ให้ดูลอย */
+  z-index: 10;
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+/* หัวข้อ Sidebar */
+.sidebar-menu h1 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: #64748b; /* สีเทาจางๆ สำหรับ Label */
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  padding-left: 10px;
+}
+
+.selectMenu-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* ระยะห่างระหว่างปุ่ม */
+}
+
+/* --- Menu Item Style --- */
+.sidebar-btn {
+  list-style: none;
+  width: 100%; /* กินเต็มความกว้าง */
+  display: flex;
+  align-items: center;
+  padding: 14px 18px; /* เพิ่มพื้นที่ให้ดูโปร่ง */
+  border-radius: 12px; /* มุมมน */
+  cursor: pointer;
+  color: #94a3b8; /* สีตัวอักษรปกติ (Slate 400) */
+  font-size: 1rem;
+  font-weight: 400;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+/* Hover Effect */
+.sidebar-btn:hover {
+  background-color: rgba(255, 255, 255, 0.05); /* พื้นหลังจางๆ ตอน Hover */
+  color: #fff;
+  transform: translateX(4px); /* ขยับขวานิดๆ */
+}
+
+/* --- Active State (จุดเด่น) --- */
+.sidebar-btn.active {
+  background-color: #facc15; /* สีเหลืองทอง (Yellow 400) */
+  color: #0f172a; /* สีตัวอักษรเข้มบนพื้นเหลือง */
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(250, 204, 21, 0.3); /* เงาสีเหลืองฟุ้งๆ */
+}
+
+/* เส้นคั่น */
+.sidebar-menu hr {
+  margin: 2rem 0;
+  border: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+}
+
+/* ปุ่ม Logout */
+.sidebar-btn-logout {
+  margin-top: auto; /* ดันลงล่างสุด */
+  list-style: none;
+  padding: 14px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #ef4444; /* สีแดง Red 500 */
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.sidebar-btn-logout:hover {
+  background-color: #ef4444;
+  color: white;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+/* --- Content Area --- */
+.Page-content {
+  flex: 1;
+  padding: 40px;
+  overflow-y: auto;
+  background-color: #f1f5f9;
+}
+
+/* =========================================
+   📱 Responsive Design (Mobile)
+   ========================================= */
+@media (max-width: 768px) {
+  .Page-menu {
+    flex-direction: column;
+  }
+
+  .sidebar-menu {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    background-color: #1e293b;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  .sidebar-menu h1 {
+    display: none;
+  }
+
+  .selectMenu-container {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 5px;
+    gap: 10px;
+    
+    /* ซ่อน Scrollbar */
+    -ms-overflow-style: none; 
+    scrollbar-width: none; 
+  }
+  .selectMenu-container::-webkit-scrollbar { display: none; }
+
+  .sidebar-btn {
+    width: auto;
+    white-space: nowrap;
+    padding: 8px 20px;
+    font-size: 0.9rem;
+    border-radius: 50px; /* ทรงแคปซูล */
+    background-color: rgba(255,255,255,0.05);
+    flex-shrink: 0;
+  }
+
+  .sidebar-btn:hover {
+    transform: none;
+  }
+
+  /* Active ในมือถือ */
+  .sidebar-btn.active {
+    background-color: #facc15;
+    color: #0f172a;
+    box-shadow: none;
+  }
+
+  .sidebar-menu hr,
+  .sidebar-btn-logout {
+    display: none;
+  }
+  
+  .Page-content {
+    padding: 20px;
+  }
+}

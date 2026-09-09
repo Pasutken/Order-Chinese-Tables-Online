@@ -1,0 +1,178 @@
+.contact-admin-container {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
+.contact-admin-container h1 {
+  text-align: center;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.no-messages {
+  text-align: center;
+  font-size: 1.2rem;
+  color: #888;
+}
+
+/* (สไตล์การ์ดข้อความ) */
+.message-card {
+  background-color: #ffffff;
+  border: 1px solid #007bff; /* (กรอบสีน้ำเงิน = ยังไม่อ่าน) */
+  border-left: 5px solid #007bff; /* (ขีดเน้นด้านซ้าย) */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+/* (สไตล์เมื่อ "อ่านแล้ว") */
+.message-card.is-read {
+  background-color: #f8f9fa; /* (สีเทาอ่อน) */
+  border-color: #dde1e6;
+  border-left-color: #dde1e6;
+  opacity: 0.8; /* (จางลง) */
+}
+.message-card.is-read .message-header strong {
+  color: #6c757d;
+}
+
+/* (ส่วนหัว: ชื่อ, เบอร์โทร, วันที่) */
+.message-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; /* (เผื่อจอเล็ก) */
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  background-color: #fdfdff;
+  border-bottom: 1px solid #e9ecef;
+}
+.message-card.is-read .message-header {
+  background-color: #f1f3f5;
+}
+
+.sender-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.sender-info strong {
+  font-size: 1.15rem;
+  color: #0056b3;
+}
+.sender-info span {
+  font-size: 0.95rem;
+  color: #5a6a7b;
+}
+
+.message-date {
+  font-size: 0.85rem;
+  color: #6c757d;
+}
+
+/* (ส่วนเนื้อหาข้อความ) */
+.message-body {
+  padding: 1.5rem;
+  line-height: 1.7;
+  color: #212529;
+}
+.message-body p {
+  margin: 0;
+  white-space: pre-wrap; /* (ให้แสดงผลการขึ้นบรรทัดใหม่) */
+  word-wrap: break-word; /* (ป้องกันข้อความยาวทะลุกรอบ) */
+}
+
+/* (ส่วนท้าย: ปุ่ม) */
+.message-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #f8f9fa;
+  border-top: 1px solid #e9ecef;
+}
+.message-card.is-read .message-footer {
+  background-color: #f1f3f5;
+}
+
+.btn-mark-read,
+.btn-delete {
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+}
+
+/* (ปุ่ม "อ่านแล้ว") */
+.btn-mark-read {
+  background-color: #e4f0ff;
+  color: #0056b3;
+}
+.btn-mark-read:hover {
+  background-color: #cde1ff;
+}
+
+/* (ปุ่ม "ลบ") */
+.btn-delete {
+  background-color: #fff0f1;
+  color: #dc3545;
+}
+.btn-delete:hover {
+  background-color: #ffe5e7;
+}
+
+/* --- ส่วนที่เพิ่มเข้ามาเพื่อทำ Responsive (มือถือ/แท็บเล็ต) --- */
+@media (max-width: 768px) {
+  .contact-admin-container {
+    padding: 1rem; /* ลด Padding ของ container หลัก */
+    margin-top: 1rem;
+  }
+
+  /* ปรับส่วนหัวให้เรียงแนวตั้ง */
+  .message-header {
+    flex-direction: column;
+    align-items: flex-start; /* ชิดซ้าย */
+    gap: 0.8rem;
+  }
+
+  .sender-info {
+    flex-wrap: wrap; /* เผื่อชื่อหรือเบอร์ยาวเกินไป */
+    width: 100%;
+  }
+
+  .message-date {
+    font-size: 0.8rem;
+    color: #888;
+  }
+
+  /* ปรับส่วนเนื้อหา */
+  .message-body {
+    padding: 1rem; /* ลด Padding เนื้อหา */
+  }
+
+  /* ปรับปุ่มกดให้กดง่ายขึ้น */
+  .message-footer {
+    flex-direction: column; /* เรียงปุ่มแนวตั้ง */
+  }
+
+  .btn-mark-read,
+  .btn-delete {
+    width: 100%; /* ปุ่มเต็มความกว้าง */
+    justify-content: center; /* จัดข้อความกึ่งกลางปุ่ม */
+    padding: 12px; /* เพิ่มพื้นที่กด */
+    font-size: 1rem;
+  }
+}
